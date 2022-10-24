@@ -102,7 +102,7 @@ void* __matrix_multiply_divider(void* args){
 }
 
 void matrix_plus(Matrix* res, Matrix* m1, Matrix* m2){
-    if(m1->row == m2->row && m1->col == m2->col){
+    if(res->row == m1->row && res->col == m1->col && res->row == m2->row && res->col == m2->col){
         pthread_t* thread_handles = (pthread_t*)malloc(thread_count * sizeof(pthread_t*));
         for(int tid=0; tid<thread_count; tid++){
             struct params* p = (struct params*)malloc(sizeof(struct params));
@@ -120,7 +120,7 @@ void matrix_plus(Matrix* res, Matrix* m1, Matrix* m2){
 }
 
 void matrix_minus(Matrix* res, Matrix* m1, Matrix* m2){
-    if(m1->row == m2->row && m1->col == m2->col){
+    if(res->row == m1->row && res->col == m1->col && res->row == m2->row && res->col == m2->col){
         pthread_t* thread_handles = (pthread_t*)malloc(thread_count * sizeof(pthread_t*));
         for(int tid=0; tid<thread_count; tid++){
             struct params* p = (struct params*)malloc(sizeof(struct params));
